@@ -1,0 +1,28 @@
+%packages
+@^file-print-server-environment
+@ base
+@ core
+@ desktop-debugging
+@ dial-up
+@ file-server
+@ fonts
+@ gnome-desktop
+@ guest-agents
+@ guest-desktop-agents
+@ hardware-monitoring
+@ input-methods
+@ internet-browser
+@ kde-desktop
+@ multimedia
+@ network-file-system-client
+@ print-client
+@ x11
+kexec-tools
+
+
+
+%end
+
+%addon com_redhat_kdump --enable --reserve-mb='auto'
+
+%end

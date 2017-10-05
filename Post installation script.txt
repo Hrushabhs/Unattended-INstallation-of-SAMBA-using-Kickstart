@@ -1,0 +1,42 @@
+%post --logfile /root/ks-post.log
+mkdir /smbdata
+chmod 777 /smbdata 
+cd /
+chcon -t samba_share_t /smbdata
+cd /smbdata
+touch hello{1..10}
+useradd samba; echo -e "samba\nsamba" | smbpasswd -a samba
+
+
+echo "
+[share]
+        comment = samba share
+        path = /smbdata
+        public = yes
+        writable = yes
+        browseable = yes
+        read list = samba
+        printable = no
+        write list = samba
+        valid users = samba
+        hosts allow = *  
+" >> /etc/samba/smb.conf
+
+systemctl enable smb nmb
+systemctl restart smb nmb
+%end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
